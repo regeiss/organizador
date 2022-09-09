@@ -14,6 +14,7 @@
 import requests 
 import csv 
 import os 
+import pandas 
 
 def csv_reader(endereco: str) -> None:
     with requests.Session() as sessao:
@@ -25,6 +26,10 @@ def csv_reader(endereco: str) -> None:
     with open('balancete.csv', 'w', encoding='UTF8') as f:
         writer = csv.writer(f)
         writer.writerows(cr)
+
+    balancete = pandas.read_csv('balancete.csv')
+    balancete.dropna(inplace= True)
+    balancete.to_excel(r'balancete.xlsx', index = None, header = True)
 
 def main():
     endereco = 'http://dados.tce.rs.gov.br/dados/municipal/balancete-despesa/2022.csv'
