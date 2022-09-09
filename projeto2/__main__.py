@@ -3,11 +3,11 @@
 # Arquivo: __main__.py
 # Versão: 1.0
 # Última alteração: 09/09/2002 
-# Propósito: programa main projeto1
+# Propósito: programa main projeto2 - insere sheets em planilha
 # Autor: Roberto Edgar Geiss 
 # Copyright:  
 # Produto:  
-# Observacoes: projeto1
+# Observacoes: projeto2
 # Parametros: 
 # Detalhes especificos: Curso extensão UFRGS - Introdução ao Python
 #===========================================================================================================================================
@@ -16,13 +16,12 @@ from openpyxl import Workbook
 import gera_wb
 
 def main():
-
-    rel_planilhas = ['receitas','despesas','resultado']
+    lst_planilhas = ['receitas','despesas','resultado']
     pasta = gera_wb.cria_wb('orcamento.xls')
     pasta.active
 
-    for planilha in lista_planilhas:
-        gera_wb.cria_ws(pasta)
+    for planilha in lst_planilhas:
+       gera_wb.cria_ws(planilha, pasta)
 
 if __name__ == "__main__":
     main() 
